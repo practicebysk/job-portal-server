@@ -102,7 +102,7 @@ export const login = async (req, res) => {
         httpsOnly: true,
         sameSite: "strict",
         secure: process.env.NODE_ENV === "production",
-        domain: 'job-portal-server-6tmn.onrender.com'
+        domain: 'https://job-portal-ng.netlify.app'
       })
       .json({
         message: `Welcome back ${user.fullname}`,
