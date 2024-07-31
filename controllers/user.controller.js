@@ -100,9 +100,8 @@ export const login = async (req, res) => {
       .cookie("token", token, {
         maxAge: 1 * 24 * 60 * 60 * 1000,
         httpsOnly: true,
-        sameSite: "strict",
-        secure: process.env.NODE_ENV === "production",
-        domain: 'https://job-portal-ng.netlify.app'
+        sameSite: "none",
+        secure: true
       })
       .json({
         message: `Welcome back ${user.fullname}`,
