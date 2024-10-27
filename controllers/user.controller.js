@@ -14,10 +14,12 @@ export const register = async (req, res) => {
         success: false,
       });
     }
+    let cloudResponse;
     const file = req.file;
-    const fileUri = getDataUri(file);
-    console.log(fileUri.content);
-    const cloudResponse = await cloudinary.uploader.upload(fileUri.content);
+    if (req.file) {
+      const fileUri = getDataUri(file);
+      cloudResponse = await cloudinary.uploader.upload(fileUri.content);
+    }
 
     const user = await User.findOne({ email });
     if (user) {
@@ -126,10 +128,12 @@ export const updateProfile = async (req, res) => {
   try {
     const { fullname, email, phoneNumber, bio, skills } = req.body;
 
+    let cloudResponse;
     const file = req.file;
-    // cloudinary ayega idhar
-    const fileUri = getDataUri(file);
-    const cloudResponse = await cloudinary.uploader.upload(fileUri.content);
+    if (req.file) {
+      const fileUri = getDataUri(file);
+      cloudResponse = await cloudinary.uploader.upload(fileUri.content);
+    }
 
     let skillsArray;
     if (skills) {
