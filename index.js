@@ -17,7 +17,7 @@ app.use(express.json());
 app.use(express.urlencoded({extended:true}));
 app.use(cookieParser());
 const corsOptions = {
-    origin:'https://job-portal-ng.netlify.app',
+    origin:process.env.FRONT_URL,
     credentials:true
 }
 
